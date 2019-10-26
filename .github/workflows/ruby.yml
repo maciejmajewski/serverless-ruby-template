@@ -28,5 +28,7 @@ jobs:
       run: rspec
       env:
         AWS_REGION: "eu-central-1"
+        AWS_ACCESS_KEY_ID: "dummy"
+        AWS_SECRET_ACCESS_KEY: "dummy"
     - name: Run rubocop
       run: rubocop
