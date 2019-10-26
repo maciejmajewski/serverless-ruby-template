@@ -4,6 +4,7 @@ on: [push]
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  AWS_REGION: "eu-central-1"
 
 jobs:
   fmt:
