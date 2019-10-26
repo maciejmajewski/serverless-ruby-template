@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "serverless": "^1.55.1",
+    "serverless-finch": "^2.4.3",
+    "serverless-hooks-plugin": "^1.1.0"
+  }
+}

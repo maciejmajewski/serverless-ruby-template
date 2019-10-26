@@ -1,0 +1,7 @@
+export AWS_REGION=eu-central-1
+
+export SERVERLESS_SERVICE_NAME=serverless-ruby-template
+export CLIENT_APPLICATION_DOMAIN=example.mmaj.pl
+
+export TF_VAR_serverless_service_name="${SERVERLESS_SERVICE_NAME}"
+export TF_VAR_client_application_domain="${CLIENT_APPLICATION_DOMAIN}"

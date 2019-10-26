@@ -1,0 +1,73 @@
+service: "${env:SERVERLESS_SERVICE_NAME}"
+
+plugins:
+  - serverless-hooks-plugin
+  - serverless-finch
+
+provider:
+  name: aws
+  runtime: ruby2.5
+  stage: prod
+  region: "${env:AWS_REGION}"
+  memorySize: 256
+  environment:
+    DYNAMODB_TABLE_EXAMPLE: ${self:service}-${opt:stage, self:provider.stage}-example
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:BatchWriteItem
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE_EXAMPLE}"
+  logRetentionInDays: 7
+
+custom:
+  client:
+    bucketName: "${env:CLIENT_APPLICATION_DOMAIN}"
+    distributionFolder: "client/dist"
+    manageResources: false
+  hooks:
+    package:initialize:
+      - docker run --rm -v `pwd`:`pwd` -w `pwd` lambci/lambda:build-ruby2.5 bundle install --deployment --without development test
+    package:finalize:
+      - rm -rf .bundle
+
+package:
+  exclude:
+    - 'node_modules/**'
+
+functions:
+  example:
+    handler: app/handlers/example_handler.example_handler
+    events:
+      - http:
+          path: example
+          method: get
+          cors: true
+  cron:
+    handler: app/handlers/cron_handler.cron_handler
+    events:
+      - schedule: rate(15 minutes)
+
+resources:
+  Resources:
+    ExampleDynamoDBTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Delete
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        TableName: ${self:provider.environment.DYNAMODB_TABLE_EXAMPLE}
+        BillingMode: PROVISIONED
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
