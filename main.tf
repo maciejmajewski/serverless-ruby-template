@@ -10,7 +10,9 @@ locals {
 }
 
 resource "aws_s3_bucket" "client" {
-  bucket = var.client_application_domain
+  bucket        = var.client_application_domain
+  force_destroy = true
+
   policy = <<EOF
 {
     "Version": "2012-10-17",
