@@ -177,3 +177,7 @@ build-iPhoneSimulator/
 .envrc
 .env.local
 .rspec_status
+
+client/dist/*
+
+!.gitkeep

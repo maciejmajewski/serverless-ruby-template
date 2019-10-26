@@ -55,7 +55,7 @@ rubocop
 ```
 npx serverless deploy
 terraform apply
-npx sls client deploy
+yarn build && npx sls client deploy
 ```
 
 ## Configuration files
