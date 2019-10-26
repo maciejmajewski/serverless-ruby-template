@@ -8,10 +8,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Set up Ruby 2.5.7
+    - name: Set up Ruby 2.5.6 (2.5.7 is not yet supported)
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: 2.5.7
+        ruby-version: 2.5.6
     - name: Install dependencies
       run: |
         gem install bundler
