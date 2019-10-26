@@ -1,6 +1,5 @@
 # Serverless Ruby template
-
-![](https://github.com/maciejmajewski/serverless-ruby-template/workflows/Ruby/badge.svg)
+[![Build Status](https://github.com/maciejmajewski/serverless-ruby-template/workflows/Ruby/badge.svg)](https://github.com/maciejmajewski/serverless-ruby-template/actions?workflow=Ruby)
 
 This is template for creating Serverless application with Ruby backend.
 
