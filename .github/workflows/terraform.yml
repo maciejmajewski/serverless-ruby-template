@@ -1,0 +1,23 @@
+name: Terraform
+
+on: [push]
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  AWS_REGION: "eu-central-1"
+
+jobs:
+  fmt:
+    name: fmt
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: hashicorp/terraform-github-actions/fmt@v0.4.6
+
+  validate:
+    name: validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: hashicorp/terraform-github-actions/init@v0.4.6
+      - uses: hashicorp/terraform-github-actions/validate@v0.4.6
