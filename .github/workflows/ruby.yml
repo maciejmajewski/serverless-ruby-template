@@ -32,3 +32,5 @@ jobs:
         AWS_SECRET_ACCESS_KEY: "dummy"
     - name: Run rubocop
       uses: gimenete/rubocop-action@1.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
