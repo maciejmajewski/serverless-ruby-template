@@ -31,4 +31,4 @@ jobs:
         AWS_ACCESS_KEY_ID: "dummy"
         AWS_SECRET_ACCESS_KEY: "dummy"
     - name: Run rubocop
-      run: rubocop
+      uses: gimenete/rubocop-action@1.0
