@@ -34,4 +34,4 @@ jobs:
       - run: $(cat .envrc.template)
       - uses: hashicorp/terraform-github-actions/init@v0.4.6
       - uses: hashicorp/terraform-github-actions/plan@v0.4.6
-        if: secrets.AWS_ACCESS_KEY_ID && secrets.AWS_SECRET_ACCESS_KEY
+        if: $AWS_ACCESS_KEY_ID && $AWS_SECRET_ACCESS_KEY
