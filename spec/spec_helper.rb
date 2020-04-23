@@ -2,7 +2,8 @@
 
 require_relative '../app/boot'
 
-Dir[File.expand_path('../spec/support/**/*.rb', __dir__)].each { |f| require f }
+files = File.expand_path('../spec/support/**/*.rb', __dir__)
+Dir[files].sort.each { |f| require f }
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
