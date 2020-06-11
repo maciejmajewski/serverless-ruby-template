@@ -33,7 +33,7 @@ custom:
     manageResources: false
   hooks:
     package:initialize:
-      - docker run --rm -v `pwd`:`pwd` -w `pwd` lambci/lambda:build-ruby2.5 bundle install --deployment --without development test
+      - docker run --rm -v `pwd`:`pwd` -w `pwd` lambci/lambda:build-ruby2.7 bundle install --deployment --without development test
     package:finalize:
       - rm -rf .bundle
 
