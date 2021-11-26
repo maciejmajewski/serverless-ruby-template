@@ -8,7 +8,7 @@ This is template for creating Serverless application with Ruby backend.
 
 - `node`, `yarn` - to install `serverless`
 - `terraform 0.12`
-- `ruby 2.7.1`
+- `ruby 2.7.5`
 - `direnv` (optional) - to set env variables in development automatically for
   you
 - `docker` + optional `docker-compose` - for running DynamoDB Local

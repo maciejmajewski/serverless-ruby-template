@@ -4,8 +4,8 @@
   },
   "dependencies": {
     "parcel-bundler": "^1.12.4",
-    "serverless": "^1.72.0",
-    "serverless-finch": "^2.5.2",
+    "serverless": "^2.67.0",
+    "serverless-finch": "^2.6.0",
     "serverless-hooks-plugin": "^1.1.0"
   }
 }
